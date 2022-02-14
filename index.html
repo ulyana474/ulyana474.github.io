@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Галерея</title>
+  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <title>task7</title>
+</head>
+
+<body>
+    <p class = "Demo">Demo</p>
+  <video width="400" height="300" controls src="videos/task1.mp4"  id="myVideo" autoplay>
+    <track kind="subtitles" src="subtitles/my_captions.srt" srclang="en" label="English"/>
+
+</video>
+
+  <ul id="thumbs">
+    <!-- браузер показывает небольшую встроенную подсказку из атрибута "title" при наведении курсора на текст -->
+    <li>
+     <img src="videos/task1.png" id = "icon1">
+    </li>
+    <li>
+      <img src="videos/task2.PNG" id = "icon2">
+    </li>
+    <li> 
+      <img src="videos/task3.PNG" id = "icon3">
+    </li>
+    <li> 
+      <img src="videos/task4.PNG" id = "icon4">
+    </li>
+    <li> 
+      <img src="videos/task5.PNG" id = "icon5">
+    </li>
+    <li> 
+      <img src="videos/task6.PNG" id = "icon6">
+    </li>
+    <li> 
+      <img src="videos/task7.PNG" id = "icon7">
+    </li>
+    <li> 
+      <img src="videos/task8.PNG" id = "icon8">
+    </li>
+  </ul>
+  <script>
+    //https://stackoverflow.com/questions/6877403/how-to-tell-if-a-video-element-is-currently-playing
+    Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
+    get: function(){
+        return !!(this.currentTime > 0 && !this.paused && !this.ended && this.readyState > 2);
+    }
+})
+
+var player=document.getElementById('myVideo');
+var source = player.getAttribute('src');
+var count = 1;
+var iconCount  = 8;
+
+player.addEventListener('ended',onEnded,false);
+
+    function onEnded(e) {
+        if(!e) 
+        { e = window.event; }
+        if(count == iconCount){
+          count = 1;
+        }
+        else{
+          count++;
+        }
+        player.src="videos/task"+(count % (iconCount + 1))+".mp4";
+        }
+
+function stopVideo(){
+          player.pause();
+          player.currentTime = 0;
+     }
+
+function playVideo(){
+  player.src="videos/task"+(count % (iconCount + 1))+".mp4";
+  player.play();
+}
+
+
+  document.getElementById("icon1").onclick = function(event){
+    
+    if(player.playing){ 
+     stopVideo();
+    }
+    count = 1;
+    playVideo();
+  }
+  
+  document.getElementById("icon2").onclick = function(event){
+    
+    if(player.playing){ 
+     stopVideo();
+    }
+    
+    count = 2;
+    playVideo();
+  }
+
+  document.getElementById("icon3").onclick = function(event){
+    
+    if(player.playing){ 
+     stopVideo();
+    }
+    count = 3;
+    playVideo();
+  }
+
+  document.getElementById("icon4").onclick = function(event){
+    
+    if(player.playing){ 
+     stopVideo();
+    }
+    count = 4;
+    playVideo();
+  }
+
+  document.getElementById("icon5").onclick = function(event){
+    
+    if(player.playing){ 
+     stopVideo();
+    }
+    count = 5;
+    playVideo();
+  }
+
+  document.getElementById("icon6").onclick = function(event){
+    
+    if(player.playing){ 
+     stopVideo();
+    }
+    count = 6;
+    playVideo();
+  }
+
+  document.getElementById("icon7").onclick = function(event){
+    
+    if(player.playing){ 
+     stopVideo();
+    }
+    count = 7;
+    playVideo();
+  }
+
+  document.getElementById("icon8").onclick = function(event){
+    
+    if(player.playing){ 
+     stopVideo();
+    }
+    count = 8;
+    playVideo();
+  }
+  </script>
+
+</body>
+</html>
